@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as C from './App.styles';
 import { Note } from './types/Note';
+import { ListItem } from './components/ListItem';
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -42,13 +43,13 @@ const App = () => {
             <>
               {pressEnter &&
                 <>
-                  <h1>List of Notes</h1>
-
-                  <ul>
-                    {notes.map((item) => (
-                      <li>{item.title}</li>
-                    ))}
-                  </ul>
+                  {notes.map((item, index) => (
+                    <ListItem
+                      key={index}
+                      data={item}
+                    />
+                  ))
+                  }
                 </>
               }
 
