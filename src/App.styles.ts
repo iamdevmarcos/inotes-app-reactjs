@@ -41,7 +41,7 @@ export const Key = styled.span`
     font-family: Consolas !important;
     background-color:#EDF2F7;
     border-radius: 5px;
-    border-bottom: 3px solid #ccc;
+    border-bottom: 3px solid #CCC;
     border-bottom-width:3px;
     font-size: 12px;
     font-weight: bold;
@@ -50,8 +50,10 @@ export const Key = styled.span`
     padding-inline: 0.6em;
     white-space: nowrap;
     margin:0px 5px;
+    transition: all ease 0.2s;
 
     &&:hover {
+        background-color:#CCC;
         border-bottom-width:1px;
         cursor:pointer;
     }
