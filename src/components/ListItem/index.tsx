@@ -1,16 +1,19 @@
 import { ChangeEvent, useState } from 'react';
 import * as C from './styles';
 import { Note } from '../../types/Note';
+import { toggleDone } from '../../services/ApiService';
 
 type Props = {
-    data: Note
+    data: Note,
+    reloadNotes: () => void
 }
 
-export const ListItem = ({ data }: Props) => {
+export const ListItem = ({ data, reloadNotes }: Props) => {
     const [isChecked, setIsChecked] = useState(data.done);
 
-    const handleChecked = (e: ChangeEvent) => {
-        setIsChecked(prevState => !prevState);
+    const handleDone = async (e: ChangeEvent) => {
+        await toggleDone(data.id);
+        reloadNotes();
     }
 
     return(
@@ -18,7 +21,7 @@ export const ListItem = ({ data }: Props) => {
             <input 
                 type="checkbox"
                 checked={isChecked}
-                onChange={handleChecked}
+                onChange={handleDone}
             />
             <label>{data.title}</label>
         </C.Container>

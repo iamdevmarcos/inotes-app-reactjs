@@ -47,6 +47,7 @@ const App = () => {
                     <ListItem
                       key={index}
                       data={item}
+                      reloadNotes={loadNotes}
                     />
                   ))
                   }
