@@ -11,6 +11,16 @@ const App = () => {
     loadNotes();
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('keydown', (e) => {
+      switch(e.code) {
+        case 'Enter':
+          setPressEnter(true);
+          break;
+      }
+    });
+  }, []);
+
   const loadNotes = async () => {
     setLoading(true);
     const res = await fetch("http://localhost:4000/notes");
@@ -45,7 +55,7 @@ const App = () => {
               {!pressEnter &&
                   <div className="enterStep">
                     <span>
-                      Press <C.Key>enter</C.Key> to start
+                      Press <C.Key onClick={e=>setPressEnter(true)}>enter</C.Key> to start
                     </span>
                   </div>
               }
