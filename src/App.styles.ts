@@ -3,6 +3,15 @@ import styled from 'styled-components';
 export const Container = styled.div`
     background-color:#0000FF;
     min-height:100vh;
+    box-sizing:border-box;
+
+    .loading {
+        text-align:center;
+        color:#FFF;
+        font-size:20px;
+        font-weight:bold;
+        padding-top:50px;
+    }
 `;
 
 export const Area = styled.div`
