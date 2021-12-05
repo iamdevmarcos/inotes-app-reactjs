@@ -37,6 +37,19 @@ export const Header = styled.h1`
     padding-bottom:20px;
 `;
 
+export const Footer = styled.footer`
+    max-width:980px;
+    margin:auto;
+    text-align:center;
+    border-top:1px solid #CCC;
+    padding:20px 0;
+
+    a {
+        text-decoration:none;
+        color:inherit;
+    }
+`;
+
 export const Key = styled.span`
     font-family: Consolas !important;
     background-color:#EDF2F7;

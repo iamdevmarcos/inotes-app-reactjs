@@ -63,6 +63,10 @@ const App = () => {
             </>
           }
         </C.Area>
+
+        {pressEnter && !loading &&
+          <C.Footer>Made with 🤍 by <a href="https://github.com/iamdevmarcos" target="_blank">Marcos Andre</a></C.Footer>
+        }
       </C.Container>
   );
 }
