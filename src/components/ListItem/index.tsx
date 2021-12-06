@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import * as C from './styles';
 import { Note } from '../../types/Note';
-import { toggleDone } from '../../services/ApiService';
+import { toggleDone } from '../../services/api';
 
 type Props = {
     data: Note,

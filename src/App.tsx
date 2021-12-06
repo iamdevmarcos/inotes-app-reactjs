@@ -8,6 +8,8 @@ const App = () => {
   const [pressEnter, setPressEnter] = useState(false);
   const [notes, setNotes] = useState<Note[]>([]);
 
+  const [activePlus, setActivePlus] = useState(true);
+
   useEffect(() => {
     loadNotes();
   }, []);
@@ -17,7 +19,17 @@ const App = () => {
       switch(e.code) {
         case 'Enter':
           setPressEnter(true);
-          break;
+        break;
+
+        case 'Equal':
+        case 'NumpadAdd':
+          setActivePlus(false);
+        break;
+
+        case 'Minus':
+        case 'NumpadSubtract':
+          setActivePlus(true);
+        break;
       }
     });
   }, []);
@@ -32,7 +44,15 @@ const App = () => {
  
   return (
       <C.Container>
-        <C.PlusButton>Press <C.Key>+</C.Key></C.PlusButton>
+
+        {pressEnter &&
+          <C.PlusButton>
+            Press
+            <C.Key onClick={e=>setActivePlus((prevState) => !prevState)}>
+              {activePlus?'+':'-'}
+            </C.Key>
+          </C.PlusButton>
+        }
 
         <C.Area>
           <C.Header>iNotes</C.Header>
@@ -45,13 +65,17 @@ const App = () => {
             <>
               {pressEnter &&
                 <>
+                  {!activePlus &&
+                    <div>Formulario para cadastrar</div>
+                  }
+
                   {notes.map((item, index) => (
-                    <ListItem
-                      key={index}
-                      data={item}
-                      reloadNotes={loadNotes}
-                    />
-                  ))
+                      <ListItem
+                        key={index}
+                        data={item}
+                        reloadNotes={loadNotes}
+                      />
+                    ))
                   }
                 </>
               }
@@ -68,7 +92,9 @@ const App = () => {
         </C.Area>
 
         {pressEnter && !loading &&
-          <C.Footer>Made with 🤍 by <a href="https://github.com/iamdevmarcos" target="_blank">Marcos Andre</a></C.Footer>
+          <C.Footer>
+            Made with 🤍 by <a href="https://github.com/iamdevmarcos" target="_blank">Marcos Andre</a>
+          </C.Footer>
         }
       </C.Container>
   );
