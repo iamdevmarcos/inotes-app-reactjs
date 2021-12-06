@@ -67,7 +67,7 @@ const App = () => {
               {pressEnter &&
                 <>
                   {!activePlus &&
-                    <AddArea />
+                    <AddArea reloadNotes={loadNotes} />
                   }
 
                   {notes.map((item, index) => (

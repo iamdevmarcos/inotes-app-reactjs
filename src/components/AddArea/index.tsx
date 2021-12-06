@@ -1,8 +1,20 @@
-import { useState } from 'react';
+import { useState, KeyboardEvent } from 'react';
 import * as C from './styles';
+import { insertNote } from '../../services/api';
 
-export const AddArea = () => {
+type Props = {
+    reloadNotes: () => void
+}
+
+export const AddArea = ({ reloadNotes }: Props) => {
     const [inputText, setInputText] = useState('');
+
+    const handleEnter = async (e: KeyboardEvent) => {
+        if(e.code === 'Enter' && inputText !== '') {
+            await insertNote(inputText);
+            reloadNotes();
+        }
+    }
 
     return (
         <C.Container>
@@ -12,6 +24,7 @@ export const AddArea = () => {
                 placeholder="type something"
                 value={inputText}
                 onChange={e=>setInputText(e.target.value)}
+                onKeyUp={handleEnter}
             />
         </C.Container>
     );
