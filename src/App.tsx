@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as C from './App.styles';
 import { Note } from './types/Note';
 import { ListItem } from './components/ListItem';
+import { AddArea } from './components/AddArea';
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -66,7 +67,7 @@ const App = () => {
               {pressEnter &&
                 <>
                   {!activePlus &&
-                    <div>Formulario para cadastrar</div>
+                    <AddArea />
                   }
 
                   {notes.map((item, index) => (
