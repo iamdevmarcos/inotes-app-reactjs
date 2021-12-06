@@ -32,6 +32,8 @@ const App = () => {
  
   return (
       <C.Container>
+        <C.PlusButton>Press <C.Key>+</C.Key></C.PlusButton>
+
         <C.Area>
           <C.Header>iNotes</C.Header>
 

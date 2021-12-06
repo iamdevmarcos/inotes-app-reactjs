@@ -37,6 +37,23 @@ export const Header = styled.h1`
     padding-bottom:20px;
 `;
 
+export const PlusButton = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2D3748;
+    color:#FFF;
+    width:100px;
+    height:50px;
+    border: 1px solid #2D3748;
+    border-bottom-right-radius:10px;
+    border-top-right-radius:10px;
+    box-shadow: 0 0 2px #CCC;
+    position: fixed;
+    margin-top: 80px;
+    padding:5px;
+`;
+
 export const Footer = styled.footer`
     max-width:980px;
     margin:auto;
@@ -64,6 +81,7 @@ export const Key = styled.span`
     white-space: nowrap;
     margin:0px 5px;
     transition: all ease 0.2s;
+    color:#000;
 
     &&:hover {
         background-color:#CCC;
