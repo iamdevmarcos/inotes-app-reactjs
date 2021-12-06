@@ -4,7 +4,7 @@ export const insertNote = async (title: string) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ title, categoryId: 2 })
+        body: JSON.stringify({ title, categoryId: 1 })
     });
     const json = await res.json();
 

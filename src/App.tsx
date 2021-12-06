@@ -6,6 +6,7 @@ import { AddArea } from './components/AddArea';
 
 const App = () => {
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [pressEnter, setPressEnter] = useState(false);
   const [notes, setNotes] = useState<Note[]>([]);
 
@@ -36,11 +37,17 @@ const App = () => {
   }, []);
 
   const loadNotes = async () => {
-    setLoading(true);
-    const res = await fetch("http://localhost:4000/notes");
-    const json = await res.json();
-    setNotes(json.notes);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const res = await fetch("http://localhost:4000/notes");
+      const json = await res.json();
+      setNotes(json.notes);
+      setLoading(false);
+    } catch(e) {
+      setLoading(false);
+      setErrorMessage("Tente novamente mais tarde...");
+    }
+    
   }
  
   return (
@@ -60,6 +67,10 @@ const App = () => {
 
           {loading &&
             <div className="loading">⌛ Loading...</div>
+          }
+
+          {!loading && notes.length == 0 &&
+            <div className="loading">{errorMessage}</div>
           }
 
           {!loading && notes.length > 0 &&
