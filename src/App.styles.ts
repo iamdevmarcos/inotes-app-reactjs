@@ -63,6 +63,7 @@ export const Footer = styled.footer`
 
     a {
         text-decoration:none;
+        border-bottom:1px solid #CCC;
         color:inherit;
     }
 `;
