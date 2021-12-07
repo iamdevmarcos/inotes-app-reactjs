@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import * as C from './styles';
 import { Note } from '../../types/Note';
+import { FirstLetterUp } from '../../helpers/FirstLetterUp';
 import { toggleDone } from '../../services/api';
 
 type Props = {
@@ -23,7 +24,7 @@ export const ListItem = ({ data, reloadNotes }: Props) => {
                 checked={isChecked}
                 onChange={handleDone}
             />
-            <label>{data.title}</label>
+            <label>{FirstLetterUp(data.title)}</label>
         </C.Container>
     );
 }
