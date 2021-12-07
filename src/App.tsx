@@ -40,9 +40,10 @@ const App = () => {
   const loadNotes = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:4000/notes");
-      const json = await res.json();
+
+      const json = await api.getAllNotes();
       setNotes(json.notes);
+
       setLoading(false);
     } catch(e) {
       setLoading(false);
