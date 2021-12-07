@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import * as C from './styles';
 import { Note } from '../../types/Note';
 import { FirstLetterUp } from '../../helpers/FirstLetterUp';
-import { toggleDone } from '../../services/api';
+import { toggleDone, removeNote } from '../../services/api';
 
 type Props = {
     data: Note,
@@ -17,8 +17,11 @@ export const ListItem = ({ data, reloadNotes }: Props) => {
         reloadNotes();
     }
 
-    const handleRemove = (id: number) => {
-        alert(`Clicou no ${id}`);
+    const handleRemove = async (id: number) => {
+        if(confirm("delete this note?")) {
+            await removeNote(id);
+            reloadNotes();
+        }
     }
 
     return(
