@@ -17,14 +17,21 @@ export const ListItem = ({ data, reloadNotes }: Props) => {
         reloadNotes();
     }
 
+    const handleRemove = (id: number) => {
+        alert(`Clicou no ${id}`);
+    }
+
     return(
-        <C.Container>
+        <C.Container done={data.done}>
             <input 
                 type="checkbox"
                 checked={isChecked}
                 onChange={handleDone}
             />
             <label>{FirstLetterUp(data.title)}</label>
+            <span>
+                <div onClick={e=>handleRemove(data.id)}>❌</div>
+            </span>
         </C.Container>
     );
 }
