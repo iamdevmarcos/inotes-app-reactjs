@@ -1,6 +1,6 @@
 import { useState, KeyboardEvent } from 'react';
 import * as C from './styles';
-import { insertNote } from '../../services/api';
+import { api } from '../../services/api';
 
 type Props = {
     reloadNotes: () => void
@@ -11,7 +11,7 @@ export const AddArea = ({ reloadNotes }: Props) => {
 
     const handleEnter = async (e: KeyboardEvent) => {
         if(e.code === 'Enter' && inputText !== '') {
-            await insertNote(inputText);
+            await api.insertNote(inputText);
             reloadNotes();
         }
     }
