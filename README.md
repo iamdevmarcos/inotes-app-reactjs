@@ -14,8 +14,6 @@
 ### Global prerequisites 
 To run this project in the development mode, you'll need to the server running locally on your machine with the mock data. You can find the server and all the instructions to start the server [here](https://github.com/iamdevmarcos/inotes-api-nodejs).
 
-`npm install -g nodemon typescript ts-node`
-
 ### Installation
 `npm install`
 
